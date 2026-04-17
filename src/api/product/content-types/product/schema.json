@@ -1,0 +1,120 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "physical",
+        "digital"
+      ]
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 0,
+      "max": 5
+    },
+    "barcode": {
+      "type": "string"
+    },
+    "stock": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "weight": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "json"
+    },
+    "productImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "specifications": {
+      "type": "json",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": ""
+            },
+            ""
+          ]
+        }
+      }
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "related_products"
+    },
+    "related_products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "products"
+    },
+    "herbs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::herb.herb",
+      "inversedBy": "products"
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    },
+    "cost": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "sku": {
+      "type": "string"
+    },
+    "review_and_ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review-and-rating.review-and-rating",
+      "mappedBy": "product"
+    }
+  }
+}

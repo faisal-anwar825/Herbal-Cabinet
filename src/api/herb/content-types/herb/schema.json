@@ -1,0 +1,111 @@
+{
+  "kind": "collectionType",
+  "collectionName": "herbs",
+  "info": {
+    "singularName": "herb",
+    "pluralName": "herbs",
+    "displayName": "Herb"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "preparation": {
+      "type": "text",
+      "required": true
+    },
+    "precautions": {
+      "type": "text",
+      "required": true
+    },
+    "flavor": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "benefits": {
+      "type": "json",
+      "required": true
+    },
+    "relatedRecipes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::recipe.recipe",
+      "mappedBy": "herbsUseds"
+    },
+    "herbs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::herb.herb",
+      "inversedBy": "relatedHerbs"
+    },
+    "relatedHerbs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::herb.herb",
+      "mappedBy": "herbs"
+    },
+    "searchKeywords": {
+      "type": "json",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "herbs"
+    },
+    "scientificName": {
+      "type": "string",
+      "required": true
+    },
+    "origin": {
+      "type": "text",
+      "required": true
+    },
+    "uses": {
+      "type": "json",
+      "required": true
+    },
+    "forums": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::forum.forum",
+      "mappedBy": "related_herb"
+    },
+    "herbId": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    }
+  }
+}

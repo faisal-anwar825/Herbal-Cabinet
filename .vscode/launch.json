@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Strapi",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "develop"],
+      "port": 9229,
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "restart": true
+    }
+  ]
+}

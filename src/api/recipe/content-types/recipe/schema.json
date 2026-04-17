@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "prepTime": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "servings": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Easy",
+        "Medium",
+        "Challenging"
+      ]
+    },
+    "ingredients": {
+      "type": "json",
+      "required": true
+    },
+    "instructions": {
+      "type": "json",
+      "required": true
+    },
+    "benefits": {
+      "type": "json",
+      "required": true
+    },
+    "herbsUseds": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::herb.herb",
+      "inversedBy": "relatedRecipes"
+    },
+    "dietaryInfo": {
+      "type": "json",
+      "required": false
+    },
+    "allergenWarnings": {
+      "type": "json",
+      "required": false
+    },
+    "nutritionInfo": {
+      "type": "json",
+      "required": false
+    },
+    "tags": {
+      "type": "json",
+      "required": false
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "cookTime": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "review_and_ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review-and-rating.review-and-rating",
+      "mappedBy": "recipe"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

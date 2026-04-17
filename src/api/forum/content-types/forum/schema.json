@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forums",
+  "info": {
+    "singularName": "forum",
+    "pluralName": "forums",
+    "displayName": "Forum"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Herb Discussion",
+        "Recipes",
+        "Products",
+        "General"
+      ]
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "forums"
+    },
+    "related_herb": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::herb.herb",
+      "inversedBy": "forums"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "isPinned": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "isLocked": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "forumreplies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::forumreply.forumreply",
+      "mappedBy": "forum"
+    }
+  }
+}

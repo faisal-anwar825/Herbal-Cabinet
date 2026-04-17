@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "review_and_ratings",
+  "info": {
+    "singularName": "review-and-rating",
+    "pluralName": "review-and-ratings",
+    "displayName": "Review&Rating"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "review_and_ratings"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "review_and_ratings"
+    },
+    "expert": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::expert.expert",
+      "inversedBy": "review_and_ratings"
+    },
+    "recipe": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::recipe.recipe",
+      "inversedBy": "review_and_ratings"
+    },
+    "rating": {
+      "type": "integer",
+      "required": false,
+      "min": 0,
+      "max": 5
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "verified_purchase": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "helpful_count": {
+      "type": "integer",
+      "min": 0
+    },
+    "unhelpful_count": {
+      "type": "integer",
+      "min": 0
+    },
+    "reviewStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ]
+    }
+  }
+}

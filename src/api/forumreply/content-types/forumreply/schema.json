@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forumreplies",
+  "info": {
+    "singularName": "forumreply",
+    "pluralName": "forumreplies",
+    "displayName": "Forumreply"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "forum": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::forum.forum",
+      "inversedBy": "forumreplies"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "forumreplies"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "isAnswer": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    }
+  }
+}

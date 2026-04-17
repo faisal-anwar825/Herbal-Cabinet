@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consultations",
+  "info": {
+    "singularName": "consultation",
+    "pluralName": "consultations",
+    "displayName": "Consultation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "consultationNumber": {
+      "type": "biginteger"
+    },
+    "expert": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::expert.expert",
+      "inversedBy": "consultations",
+       "filterable": true,
+      "private": false
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "consultations"
+    },
+    "consultationStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "confirmed",
+        "in-progress",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "scheduledDate": {
+      "type": "date"
+    },
+    "time": {
+      "type": "time"
+    },
+    "duration": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "consultationType": {
+      "type": "enumeration",
+      "enum": [
+        "virtual-call",
+        "chat",
+        "email",
+        "in-person"
+      ]
+    },
+    "topic": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal",
+      "min": 0
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "paid",
+        "refunded"
+      ]
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "meetingLink": {
+      "type": "string"
+    },
+    "recordingLink": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "text"
+    },
+    "recommendations": {
+      "type": "json"
+    },
+    "feedback": {
+      "type": "json"
+    }
+  }
+}
